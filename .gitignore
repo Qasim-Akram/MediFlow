@@ -1,0 +1,13 @@
+bin/
+obj/
+.vs/
+*.user
+*.suo
+publish/
+*.log
+*.mdf
+*.ldf
+*.ndf
+Thumbs.db
+$RECYCLE.BIN/
+TestResults/

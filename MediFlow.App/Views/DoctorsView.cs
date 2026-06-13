@@ -79,7 +79,7 @@ public class DoctorsView : UserControl
     private Panel BuildFilterBar()
     {
         var p = new Panel { Dock = DockStyle.Fill, BackColor = Theme.Background };
-        _txtSearch = UIHelper.MakeSearchBox("🔍  Search by name, email, ID...");
+        _txtSearch = UIHelper.MakeSearchBox("Search by name, email, ID...");
         _txtSearch.Width = 260; _txtSearch.Location = new Point(0, 9);
         _txtSearch.KeyUp += async (s, e) => { if (e.KeyCode == Keys.Enter) await ApplyFilter(); };
 
@@ -107,7 +107,7 @@ public class DoctorsView : UserControl
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
 
         var specs = await _svc.GetSpecializationsAsync();
         var current = _cmbSpec.SelectedItem?.ToString();
@@ -126,12 +126,12 @@ public class DoctorsView : UserControl
         var spec  = _cmbSpec.SelectedItem?.ToString() ?? "All";
         var avail = _cmbAvail.SelectedItem?.ToString();
         bool? isAvail = avail == "Available" ? true : avail == "Unavailable" ? false : null;
-        var placeholder = "🔍  Search by name, email, ID...";
+        var placeholder = "Search by name, email, ID...";
         var list = await _svc.SearchAsync(kw == placeholder ? "" : kw, spec, isAvail);
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
     }
 
     private void HideColumns() { if (_grid.Columns["DoctorId"] != null) _grid.Columns["DoctorId"]!.Visible = false; }

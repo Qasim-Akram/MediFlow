@@ -80,7 +80,7 @@ public class AppointmentsView : UserControl
     private Panel BuildFilterBar()
     {
         var p = new Panel { Dock = DockStyle.Fill, BackColor = Theme.Background };
-        _txtSearch = UIHelper.MakeSearchBox("🔍  Search by patient, doctor, token...");
+        _txtSearch = UIHelper.MakeSearchBox("Search by patient, doctor, token...");
         _txtSearch.Width = 250; _txtSearch.Location = new Point(0, 9);
 
         _cmbStatus = new ComboBox { Width = 130, Location = new Point(260, 9), Font = Theme.FontRegular, DropDownStyle = ComboBoxStyle.DropDownList };
@@ -107,14 +107,14 @@ public class AppointmentsView : UserControl
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
         if (ParentForm is MainForm mf) mf.SetStatus($"Appointments loaded — {list.Count} records");
     }
 
     private async Task ApplyFilter()
     {
         var kw = _txtSearch.Text.Trim();
-        var placeholder = "🔍  Search by patient, doctor, token...";
+        var placeholder = "Search by patient, doctor, token...";
         var statusStr = _cmbStatus.SelectedItem?.ToString();
         AppointmentStatus? status = statusStr != null && statusStr != "All" ? Enum.Parse<AppointmentStatus>(statusStr) : null;
         DateTime? date = _chkDate.Checked ? _dtpFilter.Value.Date : null;
@@ -122,7 +122,7 @@ public class AppointmentsView : UserControl
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
     }
 
     private void HideColumns()

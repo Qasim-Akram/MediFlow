@@ -106,7 +106,7 @@ public class PatientsView : UserControl
     {
         var p = new Panel { Dock = DockStyle.Fill, BackColor = Theme.Background };
 
-        _txtSearch = UIHelper.MakeSearchBox("🔍  Search by name, phone, ID...");
+        _txtSearch = UIHelper.MakeSearchBox("Search by name, phone, ID...");
         _txtSearch.Width = 280;
         _txtSearch.Location = new Point(0, 9);
         _txtSearch.KeyUp += async (s, e) => { if (e.KeyCode == Keys.Enter) await ApplyFilter(); };
@@ -143,7 +143,7 @@ public class PatientsView : UserControl
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
         if (ParentForm is MainForm mf)
             mf.SetStatus($"Patients loaded — {list.Count} records");
     }
@@ -153,13 +153,13 @@ public class PatientsView : UserControl
         var kw = _txtSearch.Text.Trim();
         var gender = _cmbGender.SelectedItem?.ToString() ?? "All";
         var bg = _cmbBloodGroup.SelectedItem?.ToString() ?? "All";
-        var placeholder = "🔍  Search by name, phone, ID...";
+        var placeholder = "Search by name, phone, ID...";
         var keyword = kw == placeholder ? "" : kw;
         var list = await _svc.SearchAsync(keyword, gender, bg);
         _binding.DataSource = list;
         _grid.DataSource = _binding;
         HideColumns();
-        _lblCount.Text = $"{list.Count} record(s)";
+        _lblCount.Text = $"{list.Count} records";
     }
 
     private void HideColumns()

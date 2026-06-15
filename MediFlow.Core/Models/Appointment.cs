@@ -2,9 +2,7 @@ namespace MediFlow.Core.Models;
 
 public enum AppointmentStatus
 {
-    Scheduled,
-    Completed,
-    Cancelled
+    Scheduled,    Completed, Cancelled
 }
 
 public class Appointment

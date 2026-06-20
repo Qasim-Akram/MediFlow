@@ -55,7 +55,6 @@ public class DoctorService : DbService, IDoctorService
         using var reader = await cmd.ExecuteReaderAsync();
         return await reader.ReadAsync() ? Map(reader) : null;
     }
-
     public async Task AddAsync(Doctor d)
     {
         using var conn = CreateConnection();
@@ -73,7 +72,6 @@ public class DoctorService : DbService, IDoctorService
         cmd.Parameters.AddWithValue("@qual", (object?)d.Qualification ?? DBNull.Value);
         await cmd.ExecuteNonQueryAsync();
     }
-
     public async Task UpdateAsync(Doctor d)
     {
         using var conn = CreateConnection();
@@ -121,7 +119,6 @@ public class DoctorService : DbService, IDoctorService
             dict[reader["Specialization"].ToString()!] = (int)reader["Cnt"];
         return dict;
     }
-
     public async Task<List<string>> GetSpecializationsAsync()
     {
         var list = new List<string>();
@@ -133,7 +130,6 @@ public class DoctorService : DbService, IDoctorService
             list.Add(reader[0].ToString()!);
         return list;
     }
-
     private static Doctor Map(SqlDataReader r) => new()
     {
         DoctorId          = r["DoctorId"].ToString()!,

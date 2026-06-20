@@ -46,19 +46,16 @@ GO
 
 INSERT INTO Patients VALUES
 ('PAT001A2B3C', 'Ahmed Raza',   'Male',   '1990-03-15', '0300-1234567', 'House 12, Block B, Bahawalpur', 'B+',  GETDATE()),
-('PAT002D4E5F', 'Sana Malik',   'Female', '1985-07-22', '0321-9876543', 'Street 5, Model Town, Lahore',  'A+',  GETDATE()),
-('PAT003G6H7I', 'Usman Khan',   'Male',   '1978-11-05', '0333-4567890', 'Flat 3, City Centre, Karachi',  'O+',  GETDATE()),
-('PAT004J8K9L', 'Ayesha Bibi',  'Female', '1995-02-10', '0311-1122334', 'Street 9, Gulberg III, Lahore', 'AB+', GETDATE()),
-('PAT005M0N1O', 'Bilal Hussain','Male',   '2000-06-25', '0345-9988776', 'House 5, F-7, Islamabad',       'A-',  GETDATE());
+('PAT002D4E5F', 'Sana Malik',   'Female', '1985-07-22', '0321-9876543', 'Street 5, Model Town, Lahore',  'A+',  GETDATE());
+
 
 INSERT INTO Doctors VALUES
 ('DOC001P2Q3R', 'Dr. Tariq Mahmood',   'Cardiology',   '0300-1111111', 'tariq@mediflow.com',  1, 15, 'MBBS, FCPS'),
-('DOC002S4T5U', 'Dr. Ayesha Siddiqui', 'Neurology',    '0321-2222222', 'ayesha@mediflow.com', 1, 10, 'MBBS, MRCP'),
+('DOC002S4T5U', 'Dr. Ayesha Siddiqui', 'Neurology',    '0321-2222222', 'ayesha@mediflow.com', 1, 10, 'MBBS, MRCP');
 
 INSERT INTO Appointments VALUES
 ('APT001E2F3G', 'PAT001A2B3C', 'DOC001P2Q3R', GETDATE(),                        'Chest pain checkup',      'Scheduled', 'First visit',          'TKN-001'),
-('APT002H4I5J', 'PAT002D4E5F', 'DOC002S4T5U', DATEADD(DAY, -2,  GETDATE()),     'Headache and dizziness',  'Completed', 'Prescribed medication', 'TKN-002'),
-('APT003K6L7M', 'PAT003G6H7I', 'DOC003V6W7X', DATEADD(DAY, -5,  GETDATE()),     'Knee pain',               'Cancelled', 'Patient rescheduled',   'TKN-003'),
-('APT004N8O9P', 'PAT004J8K9L', 'DOC004Y8Z9A', DATEADD(DAY, 1,   GETDATE()),     'Skin rash',               'Scheduled', NULL,                    'TKN-004'),
+('APT002H4I5J', 'PAT002D4E5F', 'DOC002S4T5U', DATEADD(DAY, -2,  GETDATE()),     'Headache and dizziness',  'Completed', 'Prescribed medication', 'TKN-002');
+
 
 GO
